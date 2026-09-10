@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyMate AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+        🎓 StudyMate <span>AI</span>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#upload">Upload</a>
+        <a href="#features">Features</a>
+        <a href="#planner">Exam Planner</a>
+        <a href="#progress">Progress</a>
+    </nav>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+
+            <p class="tag">
+                🤖 AI-Powered Learning
+            </p>
+
+            <h1>
+                Your Personal
+                <br>
+                <span>AI Study Assistant</span>
+            </h1>
+
+            <p>
+                Upload your study material and let StudyMate AI
+                create summaries, questions, quizzes and
+                personalized study plans.
+            </p>
+
+            <a href="#upload" class="btn">
+                Start Studying 🚀
+            </a>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="ai-icon">
+                🤖
+            </div>
+
+            <h3>
+                Study Smarter
+            </h3>
+
+            <p>
+                Learn faster with AI-powered assistance.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PDF UPLOAD ================= -->
+
+    <section class="upload-section" id="upload">
+
+        <h2>
+            📄 Upload Your Study Material
+        </h2>
+
+        <p>
+            Upload a PDF and let StudyMate AI analyze it.
+        </p>
+
+
+        <div class="upload-box">
+
+            <div class="upload-icon">
+                📚
+            </div>
+
+            <h3>
+                Select your PDF
+            </h3>
+
+            <p>
+                Choose a PDF from your computer
+            </p>
+
+
+            <!-- IMPORTANT FILE INPUT -->
+
+            <input
+                type="file"
+                id="pdfFile"
+                accept=".pdf,application/pdf"
+            >
+
+
+            <label
+                for="pdfFile"
+                class="upload-btn"
+            >
+                📂 Choose PDF
+            </label>
+
+
+            <!-- SELECTED FILE NAME -->
+
+            <p id="fileName">
+                No file selected
+            </p>
+
+        </div>
+
+
+        <!-- GENERATE SUMMARY BUTTON -->
+
+        <button
+            type="button"
+            class="btn action-btn"
+            onclick="generateSummary()"
+        >
+            🧠 Generate Summary
+        </button>
+
+
+        <!-- RESULT AREA -->
+
+        <div id="summaryResult"></div>
+
+    </section>
+
+
+
+    <!-- ================= AI TOOLS ================= -->
+    <section class="ai-tools" id="ai-tools">
+        <h2> AI Study Tools</h2>
+        <p>Upload a PDF above, then use these tools with your study material.</p>
+
+        <div class="tool-grid">
+            <div class="tool-card">
+                <h3>💬 Ask AI</h3>
+                <textarea id="questionInput" placeholder="Ask something about your PDF..."></textarea>
+                <button type="button" class="btn" onclick="askAI()">Ask AI</button>
+                <div id="askResult" class="tool-result"></div>
+            </div>
+
+            <div class="tool-card">
+                <h3>📝 AI Quiz</h3>
+                <select id="quizCount">
+                    <option value="5">5 Questions</option>
+                    <option value="10">10 Questions</option>
+                </select>
+                <button type="button" class="btn" onclick="generateQuiz()">Generate Quiz</button>
+                <div id="quizResult" class="tool-result"></div>
+            </div>
+
+            <div class="tool-card">
+                <h3>🧠 Flashcards</h3>
+                <select id="flashcardCount">
+                    <option value="5">5 Flashcards</option>
+                    <option value="10">10 Flashcards</option>
+                </select>
+                <button type="button" class="btn" onclick="generateFlashcards()">Create Flashcards</button>
+                <div id="flashcardResult" class="tool-result"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="features" id="features">
+
+        <h2>
+            ✨ What StudyMate AI Can Do
+        </h2>
+
+        <p>
+            Everything you need for smarter learning.
+        </p>
+
+
+        <div class="feature-grid">
+
+
+            <!-- SUMMARY -->
+
+            <div class="feature-card">
+
+                <div>
+                    📖
+                </div>
+
+                <h3>
+                    AI Summary
+                </h3>
+
+                <p>
+                    Convert lengthy study material into
+                    simple and easy-to-understand notes.
+                </p>
+
+            </div>
+
+
+            <!-- ASK AI -->
+
+            <div class="feature-card">
+
+                <div>
+                    💬
+                </div>
+
+                <h3>
+                    Ask AI
+                </h3>
+
+                <p>
+                    Ask questions about your uploaded
+                    study material and get instant answers.
+                </p>
+
+            </div>
+
+
+            <!-- QUIZ -->
+
+            <div class="feature-card">
+
+                <div>
+                    📝
+                </div>
+
+                <h3>
+                    AI Quiz
+                </h3>
+
+                <p>
+                    Automatically generate MCQs and test
+                    your knowledge.
+                </p>
+
+            </div>
+
+
+            <!-- FLASHCARDS -->
+
+            <div class="feature-card">
+
+                <div>
+                    🧠
+                </div>
+
+                <h3>
+                    Flashcards
+                </h3>
+
+                <p>
+                    Create quick revision flashcards from
+                    your notes.
+                </p>
+
+            </div>
+
+
+            <!-- EXAM PLANNER -->
+
+            <div class="feature-card">
+
+                <div>
+                    🎯
+                </div>
+
+                <h3>
+                    Exam Planner
+                </h3>
+
+                <p>
+                    Get a personalized study schedule based
+                    on your exam date.
+                </p>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="feature-card">
+
+                <div>
+                    📊
+                </div>
+
+                <h3>
+                    Progress Tracking
+                </h3>
+
+                <p>
+                    Track quiz scores and identify your
+                    weak topics.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EXAM PLANNER ================= -->
+
+    <section class="planner" id="planner">
+
+        <h2>
+            🎯 AI Exam Planner
+        </h2>
+
+        <p>
+            Create your personalized study schedule.
+        </p>
+
+
+        <div class="planner-form">
+
+            <label for="subject">
+                Subject
+            </label>
+
+            <input
+                type="text"
+                id="subject"
+                placeholder="Example: Data Structures"
+            >
+
+
+            <label for="examDate">
+                Exam Date
+            </label>
+
+            <input
+                type="date"
+                id="examDate"
+            >
+
+
+            <label for="studyTime">
+                Study Time Per Day
+            </label>
+
+            <select id="studyTime">
+
+                <option value="1">
+                    1 Hour
+                </option>
+
+                <option value="2">
+                    2 Hours
+                </option>
+
+                <option value="3">
+                    3 Hours
+                </option>
+
+                <option value="4">
+                    4 Hours
+                </option>
+
+                <option value="5">
+                    5 Hours
+                </option>
+
+            </select>
+
+
+            <button
+                type="button"
+                class="btn"
+                onclick="createPlan()"
+            >
+                Create Study Plan 🚀
+            </button>
+
+        </div>
+
+
+        <div id="planResult"></div>
+
+    </section>
+
+
+    <!-- ================= PROGRESS ================= -->
+
+    <section
+        class="progress-section"
+        id="progress"
+    >
+
+        <h2>
+            📊 Your Progress
+        </h2>
+
+
+        <div class="progress-grid">
+
+
+            <div class="progress-card">
+
+                <h3 id="questions">
+                    25
+                </h3>
+
+                <p>
+                    Questions Attempted
+                </p>
+
+            </div>
+
+
+            <div class="progress-card">
+
+                <h3 id="correct">
+                    20
+                </h3>
+
+                <p>
+                    Correct Answers
+                </p>
+
+            </div>
+
+
+            <div class="progress-card">
+
+                <h3 id="score">
+                    80%
+                </h3>
+
+                <p>
+                    Average Score
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h3>
+        🎓 StudyMate AI
+    </h3>
+
+    <p>
+        Learn smarter. Learn faster.
+    </p>
+
+    <p>
+        © 2026 StudyMate AI
+    </p>
+
+</footer>
+
+
+<!-- IMPORTANT: JAVASCRIPT -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
