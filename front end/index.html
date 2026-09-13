@@ -1,0 +1,277 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyMate AI</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="flexbox.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <h2>StudyMate <span>AI</span></h2>
+            </div>
+
+            <nav class="nav-menu">
+
+                <p class="menu-title">MAIN MENU</p>
+
+                <a href="#" class="nav-item active">
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>💬</span>
+                    AI Chat
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>📚</span>
+                    My Notes
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>🧠</span>
+                    Quiz
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>📄</span>
+                    Documents
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main">
+
+            <!-- Navbar -->
+            <header class="topbar">
+
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Welcome back! Ready to study smarter?</p>
+                </div>
+
+                <div class="profile">
+
+                    <div class="avatar">J</div>
+
+                    <div>
+                        <strong>Student</strong>
+                        <small>Keep learning 🚀</small>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- AI Section -->
+            <section class="hero">
+
+                <div class="hero-content">
+
+                    <span class="badge">
+                        ✨ AI POWERED STUDY ASSISTANT
+                    </span>
+
+                    <h2>
+                        Learn smarter with
+                        <span>StudyMate AI</span>
+                    </h2>
+
+                    <p>
+                        Ask questions, summarize notes and generate
+                        quizzes with your AI study partner.
+                    </p>
+
+                    <div class="chat-box">
+
+                        <input
+                            type="text"
+                            id="question"
+                            placeholder="Ask StudyMate anything..."
+                        >
+
+                        <button id="askBtn">
+                            Ask AI →
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="brain">
+                    🧠
+                </div>
+
+            </section>
+
+
+            <!-- Quick Actions -->
+            <section class="section">
+
+                <div class="section-heading">
+                    <h2>Quick Actions</h2>
+                    <p>Choose what you want to do.</p>
+                </div>
+
+
+                <div class="action-grid">
+
+                    <div class="action-card">
+
+                        <div class="action-icon">📄</div>
+
+                        <h3>Upload Notes</h3>
+
+                        <p>
+                            Upload your study material and let AI analyze it.
+                        </p>
+
+                        <input
+                            type="file"
+                            id="pdfFile"
+                            accept=".pdf"
+                        >
+
+                        <button id="uploadBtn">
+                            Upload PDF
+                        </button>
+
+                    </div>
+
+
+                    <div class="action-card">
+
+                        <div class="action-icon">🧠</div>
+
+                        <h3>Generate Quiz</h3>
+
+                        <p>
+                            Create a personalized quiz from your notes.
+                        </p>
+
+                        <button id="generateQuiz">
+                            Generate Quiz →
+                        </button>
+
+                    </div>
+
+
+                    <div class="action-card">
+
+                        <div class="action-icon">✨</div>
+
+                        <h3>Smart Summary</h3>
+
+                        <p>
+                            Convert lengthy notes into simple summaries.
+                        </p>
+
+                        <button>
+                            Create Summary →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Recent Materials -->
+            <section class="section">
+
+                <div class="section-heading">
+                    <h2>Recent Study Materials</h2>
+
+                    <button class="view-all">
+                        View All →
+                    </button>
+                </div>
+
+
+                <div class="notes-list">
+
+                    <div class="note-item">
+
+                        <div class="note-file">
+                            📕
+                        </div>
+
+                        <div class="note-info">
+
+                            <h3>
+                                Data Structures & Algorithms
+                            </h3>
+
+                            <p>
+                                Chapter 1 • 12 pages
+                            </p>
+
+                        </div>
+
+                        <button class="continue">
+                            Continue
+                        </button>
+
+                    </div>
+
+
+                    <div class="note-item">
+
+                        <div class="note-file">
+                            📘
+                        </div>
+
+                        <div class="note-info">
+
+                            <h3>
+                                Database Management System
+                            </h3>
+
+                            <p>
+                                Unit 2 • 18 pages
+                            </p>
+
+                        </div>
+
+                        <button class="continue">
+                            Continue
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <footer>
+                © 2026 StudyMate AI • Learn smarter, not harder.
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
+```

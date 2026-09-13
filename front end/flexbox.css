@@ -1,0 +1,124 @@
+/* 
+   1. Complete application layout
+
+   Sidebar  |  Main Content
+*/
+.app {
+    display: flex;
+}
+
+
+/*
+   2. Sidebar navigation
+
+   Items are arranged vertically.
+*/
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*
+   3. Top navigation bar
+
+   Left side  -> Dashboard
+   Right side -> Profile
+*/
+.topbar {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/*
+   4. Profile
+
+   Avatar + Student information
+*/
+.profile {
+    display: flex;
+
+    align-items: center;
+}
+
+
+/*
+   5. AI Chat Box
+
+   Input + Button
+*/
+.chat-box {
+    display: flex;
+
+    align-items: center;
+}
+
+
+/*
+   6. AI Hero Section
+
+   Text + Brain illustration
+*/
+.hero {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/*
+   7. Quick Action Cards
+
+   Cards arranged in a row.
+*/
+.action-grid {
+    display: flex;
+
+    gap: 15px;
+}
+
+
+/*
+   Each card gets equal space.
+*/
+.action-card {
+    flex: 1;
+}
+
+
+/*
+   8. Recent Notes
+
+   Icon + information + button
+*/
+.note-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+/*
+   9. Responsive Flexbox
+
+   On smaller screens cards become vertical.
+*/
+@media (max-width: 700px) {
+
+    .action-grid {
+        flex-direction: column;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
+

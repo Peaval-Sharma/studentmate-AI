@@ -1,0 +1,400 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f6fa;
+    color: #202136;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+
+    background: white;
+
+    padding: 25px 18px;
+
+    border-right: 1px solid #e5e5e5;
+}
+
+.logo {
+    margin-bottom: 40px;
+}
+
+.logo-icon {
+    width: 38px;
+    height: 38px;
+
+    background: #5b5ce2;
+    color: white;
+
+    border-radius: 10px;
+
+    text-align: center;
+    padding-top: 9px;
+
+    font-weight: bold;
+}
+
+.logo h2 {
+    font-size: 18px;
+}
+
+.logo span {
+    color: #5b5ce2;
+}
+
+.menu-title {
+    font-size: 10px;
+    color: #999;
+    margin-bottom: 12px;
+}
+
+.nav-menu {
+    gap: 6px;
+}
+
+.nav-item {
+    padding: 12px;
+
+    border-radius: 9px;
+
+    color: #666;
+
+    font-size: 14px;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background: #eeeeff;
+    color: #5556d6;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    flex: 1;
+    padding: 30px 40px;
+}
+
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar {
+    margin-bottom: 25px;
+}
+
+.topbar h1 {
+    font-size: 27px;
+    margin-bottom: 5px;
+}
+
+.topbar p {
+    color: #888;
+    font-size: 13px;
+}
+
+.profile {
+    gap: 10px;
+}
+
+.profile small {
+    display: block;
+    color: #888;
+    margin-top: 3px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+
+    background: #5b5ce2;
+    color: white;
+
+    border-radius: 50%;
+
+    text-align: center;
+    padding-top: 11px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background: #5b5ce2;
+
+    color: white;
+
+    border-radius: 18px;
+
+    padding: 40px;
+
+    margin-bottom: 25px;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.badge {
+    font-size: 10px;
+
+    background: rgba(255,255,255,0.15);
+
+    padding: 7px 10px;
+
+    border-radius: 20px;
+}
+
+.hero h2 {
+    font-size: 30px;
+    margin: 18px 0 10px;
+}
+
+.hero h2 span {
+    color: #fff18a;
+}
+
+.hero p {
+    color: #e4e4ff;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   CHAT
+========================= */
+
+.chat-box {
+    background: white;
+
+    padding: 5px;
+
+    border-radius: 10px;
+
+    max-width: 600px;
+}
+
+.chat-box input {
+    flex: 1;
+
+    border: none;
+    outline: none;
+
+    padding: 12px;
+}
+
+.chat-box button {
+    background: #242548;
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 8px;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    margin-top: 30px;
+}
+
+.section-heading {
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    font-size: 19px;
+}
+
+.section-heading p {
+    color: #888;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.view-all {
+    background: transparent;
+    color: #5556d6;
+}
+
+
+/* =========================
+   ACTION CARDS
+========================= */
+
+.action-card {
+    background: white;
+
+    border: 1px solid #e8e8e8;
+
+    border-radius: 14px;
+
+    padding: 22px;
+}
+
+.action-icon {
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.action-card h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.action-card p {
+    color: #888;
+    font-size: 11px;
+    line-height: 1.6;
+
+    margin-bottom: 15px;
+}
+
+.action-card button {
+    background: #eeeeff;
+    color: #5556d6;
+
+    padding: 9px 12px;
+
+    border-radius: 7px;
+
+    font-size: 10px;
+}
+
+.action-card input {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 10px;
+}
+
+
+/* =========================
+   RECENT NOTES
+========================= */
+
+.note-item {
+    background: white;
+
+    border: 1px solid #e8e8e8;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    margin-bottom: 10px;
+}
+
+.note-file {
+    width: 40px;
+    height: 40px;
+
+    background: #f1f1ff;
+
+    border-radius: 9px;
+
+    text-align: center;
+    padding-top: 10px;
+}
+
+.note-info {
+    flex: 1;
+}
+
+.note-info h3 {
+    font-size: 12px;
+}
+
+.note-info p {
+    font-size: 9px;
+    color: #888;
+    margin-top: 4px;
+}
+
+.continue {
+    background: #eeeeff;
+    color: #5556d6;
+
+    padding: 8px 12px;
+
+    border-radius: 7px;
+
+    font-size: 9px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+
+    color: #999;
+
+    font-size: 10px;
+
+    margin-top: 40px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .hero {
+        padding: 25px;
+    }
+
+    .hero h2 {
+        font-size: 24px;
+    }
+
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
