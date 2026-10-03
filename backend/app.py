@@ -6,8 +6,9 @@ import pytesseract
 import requests
 import json
 import os
+import shutil
 from datetime import date
-
+from mongo_db import pdf_key, get_cached, save_cached
 app = Flask(__name__)
 CORS(app)
 
@@ -18,12 +19,42 @@ CORS(app)
 OLLAMA_URL = "http://localhost:11434/api/generate"
 MODEL = "llama3.2:3b"
 
-# Tesseract location
-TESSERACT_PATH = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATH
+def find_executable(executable_name, candidate_paths=None):
+    """Find an executable by name or by a list of common install paths."""
+    found = shutil.which(executable_name)
+    if found:
+        return found
 
-# Poppler location
-POPPLER_PATH = r"C:\Users\Lenovo\Downloads\Release-26.07.0-0\poppler-26.07.0\Library\bin"
+    candidate_paths = candidate_paths or []
+    for candidate in candidate_paths:
+        if os.path.exists(candidate):
+            return candidate
+
+    return None
+
+
+TESSERACT_PATH = find_executable(
+    "tesseract",
+    [
+        r"C:\Program Files\Tesseract-OCR\tesseract.exe",
+        r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe",
+    ],
+)
+
+if TESSERACT_PATH:
+    pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATH
+
+POPPLER_PATH = find_executable(
+    "pdftoppm",
+    [
+        r"C:\Program Files\poppler\Library\bin",
+        r"C:\Program Files (x86)\poppler\Library\bin",
+        r"C:\Users\Lenovo\Downloads\Release-26.07.0-0\poppler-26.07.0\Library\bin",
+    ],
+)
+
+if POPPLER_PATH and os.path.isfile(POPPLER_PATH):
+    POPPLER_PATH = os.path.dirname(POPPLER_PATH)
 
 
 # =========================
@@ -98,6 +129,18 @@ def extract_text_with_ocr(file_bytes):
     Convert PDF pages into images using Poppler
     and read them using Tesseract OCR.
     """
+
+    if not TESSERACT_PATH:
+        raise Exception(
+            "Tesseract OCR is not installed or not available in PATH. "
+            "Please install Tesseract OCR and try again."
+        )
+
+    if not POPPLER_PATH:
+        raise Exception(
+            "Poppler is not installed or not available in PATH. "
+            "Please install Poppler and try again."
+        )
 
     try:
         print("No readable PDF text found.")
@@ -214,31 +257,23 @@ def upload_pdf():
 
         file = request.files["file"]
 
+        h = pdf_key(file)
+        cached = get_cached(h, "summary")
+        if cached:
+            return jsonify(cached)
+
         text = get_pdf_text(file)
 
         word_count = len(text.split())
 
         if word_count < 1500:
-            length_instruction = """
-Create a complete and detailed summary.
-Cover all important information from the provided material.
-"""
+            length_instruction = "Create a complete and detailed summary. Cover all important information from the provided material."
         elif word_count < 4000:
-            length_instruction = """
-Create approximately a 2-page detailed summary.
-Cover the important concepts without unnecessary repetition.
-"""
+            length_instruction = "Create approximately a 2-page detailed summary. Cover the important concepts without unnecessary repetition."
         elif word_count < 8000:
-            length_instruction = """
-Create approximately a 3-4 page detailed summary.
-Organize the material topic-by-topic.
-"""
+            length_instruction = "Create approximately a 3-4 page detailed summary. Organize the material topic-by-topic."
         else:
-            length_instruction = """
-Create approximately a 4-6 page detailed summary.
-Cover the major topics, concepts, definitions, examples and
-important examination points.
-"""
+            length_instruction = "Create approximately a 4-6 page detailed summary. Cover the major topics, concepts, definitions, examples and important examination points."
 
         prompt = f"""
 You are StudyMate AI, an educational assistant.
@@ -268,11 +303,13 @@ STUDY MATERIAL:
 
         summary = ask_ollama(prompt)
 
-        return jsonify({
+        result = {
             "summary": summary,
             "word_count": word_count,
             "ocr_used": len(text) >= 100
-        })
+        }
+        save_cached(h, "summary", result, file.filename)
+        return jsonify(result)
 
     except Exception as e:
         print("UPLOAD ERROR:", e)
@@ -558,8 +595,8 @@ if __name__ == "__main__":
     print("===================================")
     print("Ollama model:", MODEL)
     print("OCR: Enabled")
-    print("Tesseract:", TESSERACT_PATH)
-    print("Poppler:", POPPLER_PATH)
+    print("Tesseract:", TESSERACT_PATH or "NOT FOUND")
+    print("Poppler:", POPPLER_PATH or "NOT FOUND")
     print("Server: http://127.0.0.1:5000")
     print("===================================\n")
 
