@@ -8,7 +8,6 @@ import json
 import os
 import shutil
 from datetime import date
-from mongo_db import pdf_key, get_cached, save_cached
 app = Flask(__name__)
 CORS(app)
 
@@ -17,7 +16,7 @@ CORS(app)
 # =========================
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL = "llama3.2:3b"
+MODEL = "qwen2.5:3b"
 
 def find_executable(executable_name, candidate_paths=None):
     """Find an executable by name or by a list of common install paths."""
@@ -257,10 +256,7 @@ def upload_pdf():
 
         file = request.files["file"]
 
-        h = pdf_key(file)
-        cached = get_cached(h, "summary")
-        if cached:
-            return jsonify(cached)
+    
 
         text = get_pdf_text(file)
 
@@ -308,7 +304,7 @@ STUDY MATERIAL:
             "word_count": word_count,
             "ocr_used": len(text) >= 100
         }
-        save_cached(h, "summary", result, file.filename)
+
         return jsonify(result)
 
     except Exception as e:
